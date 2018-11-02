@@ -1,30 +1,145 @@
-import { Delays, greeter } from '../src/main';
+import { recordingsToFileTreeConverter } from '../src/main';
 
-describe('greeter function', () => {
-  // Read more about fake timers: http://facebook.github.io/jest/docs/en/timer-mocks.html#content
-  jest.useFakeTimers();
+const fileTreeResult = [{
+  "filename": "2017",
+  "isRecording": false,
+  "children": [{
+    "filename": "3. August",
+    "isRecording": false,
+    "children": [{
+      "filename": "Aufnahme 1",
+      "id": 566776,
+      "isRecording": true,
+      "children": [{
+        "filename": "Gesang Robin",
+        "file": {
+          "id": 11,
+          "channelNr": 1,
+          "name": "Gesang Robin",
+          "size": 2345345
+        }
+      }, {
+        "filename": "Gesang Beni",
+        "file": {
+          "id": 13,
+          "channelNr": 2,
+          "name": "Gesang Beni",
+          "size": 243233
+        }
+      }, {
+        "filename": "Gesang Silvan",
+        "file": {
+          "id": 15,
+          "channelNr": 3,
+          "name": "Gesang Silvan",
+          "size": 987987
+        }
+      }]
+    }, {
+      "filename": "Aufnahme 2",
+      "id": 566776,
+      "isRecording": true,
+      "children": [{
+        "filename": "Gesang Robin",
+        "file": {
+          "id": 21,
+          "channelNr": 1,
+          "name": "Gesang Robin",
+          "size": 2345345
+        }
+      }, {
+        "filename": "Gesang Beni",
+        "file": {
+          "id": 23,
+          "channelNr": 2,
+          "name": "Gesang Beni",
+          "size": 243233
+        }
+      }, {
+        "filename": "Gesang Silvan",
+        "file": {
+          "id": 25,
+          "channelNr": 3,
+          "name": "Gesang Silvan",
+          "size": 987987
+        }
+      }]
+    }]
+  }, {
+    "filename": "13. Oktober",
+    "isRecording": false,
+    "children": [{
+      "filename": "Aufnahme 4",
+      "id": 7989879,
+      "isRecording": true,
+      "children": [{
+        "filename": "Gesang Robin",
+        "file": {
+          "id": 41,
+          "channelNr": 1,
+          "name": "Gesang Robin",
+          "size": 2345345
+        }
+      }, {
+        "filename": "Gesang Beni",
+        "file": {
+          "id": 43,
+          "channelNr": 2,
+          "name": "Gesang Beni",
+          "size": 243233
+        }
+      }, {
+        "filename": "Gesang Silvan",
+        "file": {
+          "id": 45,
+          "channelNr": 3,
+          "name": "Gesang Silvan",
+          "size": 987987
+        }
+      }]
+    }]
+  }]
+}, {
+  "filename": "2018",
+  "isRecording": false,
+  "children": [{
+    "filename": "23. November",
+    "isRecording": false,
+    "children": [{
+      "filename": "Aufnahme 3",
+      "id": 2342134,
+      "isRecording": true,
+      "children": [{
+        "filename": "Gesang Robin",
+        "file": {
+          "id": 31,
+          "channelNr": 1,
+          "name": "Gesang Robin",
+          "size": 2345345
+        }
+      }, {
+        "filename": "Gesang Beni",
+        "file": {
+          "id": 33,
+          "channelNr": 2,
+          "name": "Gesang Beni",
+          "size": 243233
+        }
+      }, {
+        "filename": "Gesang Silvan",
+        "file": {
+          "id": 35,
+          "channelNr": 3,
+          "name": "Gesang Silvan",
+          "size": 987987
+        }
+      }]
+    }]
+  }]
+}];
 
-  const name: string = 'John';
-
-  let hello: string;
-
-  // Act before assertions
-  beforeAll(async () => {
-    const p: Promise<string> = greeter(name);
-    jest.runOnlyPendingTimers();
-    hello = await p;
-  });
-
-  // Assert if setTimeout was called properly
-  it('delays the greeting by 2 seconds', () => {
-    expect(setTimeout).toHaveBeenCalledTimes(1);
-    expect(((setTimeout as Function) as jest.Mock).mock.calls[0][1]).toBe(
-      Delays.Long,
-    );
-  });
-
-  // Assert greeter result
-  it('greets a user with `Hello, {name}` message', () => {
-    expect(hello).toBe(`Hello, ${name}`);
+describe('list of recording given', () => {
+  it('should transform it into a file-tree', () => {
+    expect(recordingsToFileTreeConverter()).toEqual(fileTreeResult);
   });
 });

@@ -26,16 +26,16 @@ export interface ChannelRecordingFile {
   size: number;
 }
 
-export class RecordingsToFileTreeConverter {
+export const recordingsToFileTreeConverter = (): FolderNode[] => {
+  return recordings;
+};
 
-}
-
-export const recordings = [
+export const recordings: Recording[] = [
   {
     id: 2342134,
     name: 'Aufnahme 3',
-    date: 20181123,
-    recordings: [
+    date: '20181123',
+    channels: [
       {
         id: 11,
         channelNr: 1,
@@ -59,8 +59,8 @@ export const recordings = [
   {
     id: 566776,
     name: 'Aufnahme 2',
-    date: 20170803,
-    recordings: [
+    date: '20170803',
+    channels: [
       {
         id: 11,
         channelNr: 1,
@@ -84,8 +84,8 @@ export const recordings = [
   {
     id: 566776,
     name: 'Aufnahme 1',
-    date: 20170803,
-    recordings: [
+    date: '20170803',
+    channels: [
       {
         id: 11,
         channelNr: 1,
@@ -109,8 +109,8 @@ export const recordings = [
   {
     id: 7989879,
     name: 'Aufnahme 4',
-    date: 20171013,
-    recordings: [
+    date: '20171013',
+    channels: [
       {
         id: 11,
         channelNr: 1,

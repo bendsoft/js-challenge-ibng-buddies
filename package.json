@@ -1,7 +1,7 @@
 {
-  "name": "node-typescript-boilerplate",
+  "name": "js-challenge-ibng-buddies",
   "version": "0.0.0",
-  "description": "Minimalistic boilerplate to quick-start Node.js development in TypeScript.",
+  "description": "Just a challenge to not be bored too much",
   "engineStrict": true,
   "engines": {
     "node": ">= 10.13 <11"
@@ -9,6 +9,7 @@
   "devDependencies": {
     "@types/jest": "~23.3.2",
     "@types/node": "~10",
+    "@types/lodash": "^4.14.117",
     "jest": "~23.6.0",
     "prettier": "1.14.3",
     "rimraf": "~2.6.2",
@@ -30,8 +31,8 @@
   "author": "Jakub Synowiec <github@jakubsynowiec.info>",
   "license": "Apache-2.0",
   "dependencies": {
-    "@types/lodash": "^4.14.117",
     "lodash": "^4.17.11",
+    "moment": "^2.22.2",
     "tslib": "~1.9.3"
   }
 }
