@@ -30,6 +30,8 @@
   "author": "Jakub Synowiec <github@jakubsynowiec.info>",
   "license": "Apache-2.0",
   "dependencies": {
+    "@types/lodash": "^4.14.117",
+    "lodash": "^4.17.11",
     "tslib": "~1.9.3"
   }
 }
