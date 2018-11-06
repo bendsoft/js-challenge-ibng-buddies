@@ -177,6 +177,6 @@ const fileTreeResult = [{
 
 describe('list of recording given', () => {
   it('should transform it into a file-tree', () => {
-    expect(RecordingsToFileTreeConverter.convert()).toEqual(fileTreeResult);
+    expect(new RecordingsToFileTreeConverter().convert()).toEqual(fileTreeResult);
   });
 });
