@@ -1,15 +1,16 @@
-import { recordingsToFileTreeConverter } from '../src/main';
+import { RecordingsToFileTreeConverter } from '../src/main';
 
 const fileTreeResult = [{
   "filename": "2017",
-  "isRecording": false,
+  "type": 0,
   "children": [{
-    "filename": "3. August",
-    "isRecording": false,
+    "filename": "3. August Aufnahme 1",
+    "type": 1,
     "children": [{
-      "filename": "Aufnahme 1",
-      "id": 566776,
-      "isRecording": true,
+      "filename": "1. track 1",
+      "id": 1324,
+      "type": 2,
+      "isTrack": true,
       "children": [{
         "filename": "Gesang Robin",
         "file": {
@@ -35,10 +36,15 @@ const fileTreeResult = [{
           "size": 987987
         }
       }]
-    }, {
-      "filename": "Aufnahme 2",
-      "id": 566776,
-      "isRecording": true,
+    }]
+  }, {
+    "filename": "3. August Aufnahme 2",
+    "type": 1,
+    "children": [{
+      "filename": "1. track 1",
+      "id": 1324,
+      "type": 2,
+      "isTrack": true,
       "children": [{
         "filename": "Gesang Robin",
         "file": {
@@ -66,12 +72,13 @@ const fileTreeResult = [{
       }]
     }]
   }, {
-    "filename": "13. Oktober",
-    "isRecording": false,
+    "filename": "13. Oktober Aufnahme 4",
+    "type": 1,
     "children": [{
-      "filename": "Aufnahme 4",
-      "id": 7989879,
-      "isRecording": true,
+      "filename": "1. track 1",
+      "id": 1324,
+      "type": 2,
+      "isTrack": true,
       "children": [{
         "filename": "Gesang Robin",
         "file": {
@@ -101,14 +108,49 @@ const fileTreeResult = [{
   }]
 }, {
   "filename": "2018",
-  "isRecording": false,
+  "type": 0,
   "children": [{
-    "filename": "23. November",
-    "isRecording": false,
+    "filename": "7. November Aufnahme 5",
+    "type": 1,
     "children": [{
-      "filename": "Aufnahme 3",
-      "id": 2342134,
-      "isRecording": true,
+      "filename": "1. track 1",
+      "id": 1324,
+      "type": 2,
+      "isTrack": true,
+      "children": [{
+        "filename": "Gesang Robin",
+        "file": {
+          "id": 31,
+          "channelNr": 1,
+          "name": "Gesang Robin",
+          "size": 2345345
+        }
+      }, {
+        "filename": "Gesang Beni",
+        "file": {
+          "id": 33,
+          "channelNr": 2,
+          "name": "Gesang Beni",
+          "size": 243233
+        }
+      }, {
+        "filename": "Gesang Silvan",
+        "file": {
+          "id": 35,
+          "channelNr": 3,
+          "name": "Gesang Silvan",
+          "size": 987987
+        }
+      }]
+    }]
+  }, {
+    "filename": "23. November Aufnahme 3",
+    "type": 1,
+    "children": [{
+      "filename": "1. track 1",
+      "id": 1324,
+      "type": 2,
+      "isTrack": true,
       "children": [{
         "filename": "Gesang Robin",
         "file": {
@@ -140,6 +182,6 @@ const fileTreeResult = [{
 
 describe('list of recording given', () => {
   it('should transform it into a file-tree', () => {
-    expect(recordingsToFileTreeConverter()).toEqual(fileTreeResult);
+    expect(RecordingsToFileTreeConverter.convert()).toEqual(fileTreeResult);
   });
 });
