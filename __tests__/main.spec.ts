@@ -10,7 +10,6 @@ const fileTreeResult = [{
       "filename": "1. track 1",
       "id": 1324,
       "type": 2,
-      "isTrack": true,
       "children": [{
         "filename": "Gesang Robin",
         "file": {
@@ -44,7 +43,6 @@ const fileTreeResult = [{
       "filename": "1. track 1",
       "id": 1324,
       "type": 2,
-      "isTrack": true,
       "children": [{
         "filename": "Gesang Robin",
         "file": {
@@ -78,7 +76,6 @@ const fileTreeResult = [{
       "filename": "1. track 1",
       "id": 1324,
       "type": 2,
-      "isTrack": true,
       "children": [{
         "filename": "Gesang Robin",
         "file": {
@@ -116,7 +113,6 @@ const fileTreeResult = [{
       "filename": "1. track 1",
       "id": 1324,
       "type": 2,
-      "isTrack": true,
       "children": [{
         "filename": "Gesang Robin",
         "file": {
@@ -150,7 +146,6 @@ const fileTreeResult = [{
       "filename": "1. track 1",
       "id": 1324,
       "type": 2,
-      "isTrack": true,
       "children": [{
         "filename": "Gesang Robin",
         "file": {

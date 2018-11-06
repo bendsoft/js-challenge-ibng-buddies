@@ -1,10 +1,14 @@
 export interface FileNode<T> extends Node {
-  file: T
+  file: T;
+}
+
+export enum FolderType {
+  PLAIN, RECORDING, TRACK
 }
 
 export interface FolderNode extends Node {
   id?: number;
-  isRecording: boolean;
+  folderType: FolderType;
   children: Node[];
 }
 
@@ -16,13 +20,13 @@ export interface RecordingModel {
   id: number;
   name: string;
   date: string;
-  tracks: Track[]
+  tracks: Track[];
 }
 
 export interface Track {
-  id: number,
-  number: number,
-  name: string,
+  id: number;
+  trackNumber: number;
+  name: string;
   channels: ChannelRecordingFile[];
 }
 
@@ -34,7 +38,7 @@ export interface ChannelRecordingFile {
 }
 
 export class RecordingsToFileTreeConverter {
-  static convert() {
+  public static convert() {
     return recordings;
   };
 }
@@ -46,7 +50,7 @@ export const recordings: RecordingModel[] = [
     date: '20181107',
     tracks: [{
       id: 1324,
-      number: 1,
+      trackNumber: 1,
       name: 'track 1',
       channels: [
         {
@@ -76,7 +80,7 @@ export const recordings: RecordingModel[] = [
     date: '20181123',
     tracks: [{
       id: 1324,
-      number: 1,
+      trackNumber: 1,
       name: 'track 1',
       channels: [
         {
@@ -106,7 +110,7 @@ export const recordings: RecordingModel[] = [
     date: '20170803',
     tracks: [{
       id: 1324,
-      number: 1,
+      trackNumber: 1,
       name: 'track 1',
       channels: [
         {
@@ -136,7 +140,7 @@ export const recordings: RecordingModel[] = [
     date: '20170803',
     tracks: [{
       id: 1324,
-      number: 1,
+      trackNumber: 1,
       name: 'track 1',
       channels: [
         {
@@ -166,7 +170,7 @@ export const recordings: RecordingModel[] = [
     date: '20171013',
     tracks: [{
       id: 1324,
-      number: 1,
+      trackNumber: 1,
       name: 'track 1',
       channels: [
         {

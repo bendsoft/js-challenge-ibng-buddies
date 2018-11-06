@@ -1,27 +1,19 @@
 [![TypeScript version][ts-badge]][typescript-31]
 [![Node.js version][nodejs-badge]][nodejs]
-[![APLv2][license-badge]][LICENSE]
-[![Build Status][travis-badge]][travis-ci]
 [![PRs Welcome][prs-badge]][prs]
-[![Donate][donate-badge]][donate]
 
-[![Watch on GitHub][github-watch-badge]][github-watch]
-[![Star on GitHub][github-star-badge]][github-star]
-[![Tweet][twitter-badge]][twitter]
-
-# node-typescript-boilerplate
+# boilerplate for js-challenges
 
 Minimalistic boilerplate to jump-start a [Node.js][nodejs] project in [TypeScript][typescript] [3.1][typescript-31].
 
 What's included:
 
 + [TypeScript][typescript] [3.1][typescript-31],
-+ [TSLint 5][tslint] with [Microsoft rules][tslint-microsoft-contrib],
++ [TSLint 5][tslint] with [Microsoft rules][tslint-microsoft-contrib] (small adjustings),
 + [Jest][jest] unit testing and code coverage,
 + Type definitions for Node.js v8 and Jest,
 + [Prettier][prettier] to enforces a consistent code style (but it's optional),
 + [NPM scripts for common operations](#available-scripts),
-+ a simple example of TypeScript code and unit test,
 + .editorconfig for consistent file format.
 
 ## Quick start
@@ -29,19 +21,12 @@ What's included:
 This project is intended to be used with the latest Active LTS release of [Node.js][nodejs]. To start, just clone the repository with following commands:
 
 ```sh
-git clone https://github.com/jsynowiec/node-typescript-boilerplate
-cd node-typescript-boilerplate
+git clone https://github.com/bendudler/js-challenge-ibng-buddies.git
+cd js-challenge-ibng-buddies
 npm install
 ```
 
-or download and unzip current `master` branch:
-
-```sh
-wget https://github.com/jsynowiec/node-typescript-boilerplate/archive/master.zip -O node-typescript-boilerplate
-unzip node-typescript-boilerplate.zip && rm node-typescript-boilerplate.zip
-```
-
-Now start adding your code in the `src` and unit tests in the `__tests__` directories. Have fun and build amazing things 🚀
+Now edit the code in the `src` and make the unit tests work in the `__tests__` directory. Have fun and build amazing things 🚀
 
 ### Unit tests in JavaScript
 
@@ -57,10 +42,6 @@ This is **optional**, but if you want to learn how to write JavaScript tests for
 + `lint` - lint source files and tests,
 + `test` - run tests,
 + `test:watch` - interactive watch mode to automatically re-run tests
-
-## Alternative
-
-As an alternative to TypeScript, you can try my [Node.js Flow boilerplate][flow-boilerplate]. It's basically the same but with ES6, async/await, Flow type checking and ESLint.
 
 ## License
 Licensed under the APLv2. See the [LICENSE](https://github.com/jsynowiec/node-typescript-boilerplate/blob/master/LICENSE) file for details.
