@@ -64,9 +64,9 @@ export class RecordingsToFileTreeConverter {
             filename: `${formatted} ${recording.name}`,
             children: recording.tracks.map(track => {
               return {
+                type: 2,
                 filename: `${track.trackNumber}. ${track.name}`,
                 id: track.id,
-                type: 2,
                 children: track.channels.map(channel => {
                   return {
                     filename: channel.name,
@@ -122,7 +122,6 @@ export class RecordingsToFileTreeConverter {
       const dateB = this.toDate(b.date).valueOf();
 
       const byDate = dateA - dateB;
-      if(byDate) { return byDate }
 
       return byDate || b.id - a.id
     });
