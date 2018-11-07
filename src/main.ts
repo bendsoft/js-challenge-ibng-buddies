@@ -43,44 +43,44 @@ export class RecordingsToFileTreeConverter {
   public convert() {
     this.orderByDateAscThenIdDesc(recordings);
 
-    const recordingsPerYear = {};
+    const recordingsPerYear = new Map();
+
     recordings.forEach(recording => {
-      const yearKey = this.toDate(recording.date)
+      const year = this.toDate(recording.date)
         .getFullYear()
         .toString();
-      recordingsPerYear[yearKey] = recordingsPerYear[yearKey] || [];
-      recordingsPerYear[yearKey].push(recording);
-    });
 
-    return Object.keys(recordingsPerYear).map(year => {
-      return {
-        filename: year,
-        type: 0,
-        children: recordingsPerYear[year].map(recording => {
-          const formatted = this.formatDate(this.toDate(recording.date));
+      if (!recordingsPerYear.has(year)) {
+        recordingsPerYear.set(year, {
+          filename: year,
+          type: 0,
+          children: [],
+        });
+      }
 
+      const formatted = this.formatDate(this.toDate(recording.date));
+      recordingsPerYear.get(year).children.push({
+        type: 1,
+        filename: `${formatted} ${recording.name}`,
+        children: recording.tracks.map(track => {
           return {
-            type: 1,
-            filename: `${formatted} ${recording.name}`,
-            children: recording.tracks.map(track => {
+            type: 2,
+            filename: `${track.trackNumber}. ${track.name}`,
+            id: track.id,
+            children: track.channels.map(channel => {
               return {
-                type: 2,
-                filename: `${track.trackNumber}. ${track.name}`,
-                id: track.id,
-                children: track.channels.map(channel => {
-                  return {
-                    filename: channel.name,
-                    file: {
-                      ...channel
-                    },
-                  };
-                }),
+                filename: channel.name,
+                file: {
+                  ...channel,
+                },
               };
             }),
           };
         }),
-      };
+      });
     });
+
+    return [...recordingsPerYear.values()];
   }
 
   private toDate(str) {
@@ -123,7 +123,7 @@ export class RecordingsToFileTreeConverter {
 
       const byDate = dateA - dateB;
 
-      return byDate || b.id - a.id
+      return byDate || b.id - a.id;
     });
   }
 }
