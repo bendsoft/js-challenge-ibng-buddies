@@ -1,3 +1,6 @@
+// tslint:disable:underscore-consistent-invocation
+import * as _ from 'lodash';
+
 export interface FileNode<T> extends Node {
   file: T;
 }
@@ -41,11 +44,9 @@ export interface ChannelRecordingFile {
 
 export class RecordingsToFileTreeConverter {
   public convert() {
-    this.orderByDateAscThenIdDesc(recordings);
-
     const recordingsPerYear = new Map();
 
-    recordings.forEach(recording => {
+    _.sortBy(recordings, ['date', 'name']).forEach(recording => {
       const year = this.toDate(recording.date)
         .getFullYear()
         .toString();
@@ -62,12 +63,12 @@ export class RecordingsToFileTreeConverter {
       recordingsPerYear.get(year).children.push({
         type: 1,
         filename: `${formatted} ${recording.name}`,
-        children: recording.tracks.map(track => {
+        children: _.sortBy(recording.tracks, 'trackNumber').map(track => {
           return {
             type: 2,
             filename: `${track.trackNumber}. ${track.name}`,
             id: track.id,
-            children: track.channels.map(channel => {
+            children: _.sortBy(track.channels, 'channelNr').map(channel => {
               return {
                 filename: channel.name,
                 file: {
@@ -113,18 +114,6 @@ export class RecordingsToFileTreeConverter {
     ];
 
     return `${date.getDate()}. ${monthNames[date.getMonth()]}`;
-  }
-
-  // tslint:disable-next-line:no-shadowed-variable
-  private orderByDateAscThenIdDesc(recordings: RecordingModel[]) {
-    return recordings.sort((a, b) => {
-      const dateA = this.toDate(a.date).valueOf();
-      const dateB = this.toDate(b.date).valueOf();
-
-      const byDate = dateA - dateB;
-
-      return byDate || b.id - a.id;
-    });
   }
 }
 
