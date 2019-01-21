@@ -1,3 +1,5 @@
+import {RecordingListUtils} from "../__tests__/recording-list-utils";
+
 export interface FileNode<T> extends Node {
   file: T;
 }
@@ -39,7 +41,7 @@ export interface ChannelRecordingFile {
 
 export class RecordingsToFileTreeConverter {
   public static convert() {
-    return recordings;
+    return RecordingListUtils.buildFileTree(recordings);
   };
 }
 
@@ -47,9 +49,57 @@ export const recordings: RecordingModel[] = [
   {
     id: 1234,
     name: 'Aufnahme 5',
-    date: '20181107',
+    date: '20171107',
     tracks: [{
+      id: 1325,
+      trackNumber: 2,
+      name: 'track 2',
+      channels: [
+        {
+          id: 31,
+          channelNr: 2,
+          name: 'Gesang Robin',
+          size: 2345345
+        },
+        {
+          id: 33,
+          channelNr: 1,
+          name: 'Gesang Beni',
+          size: 243233
+        },
+        {
+          id: 35,
+          channelNr: 3,
+          name: 'Gesang Silvan',
+          size: 987987
+        }
+      ]
+    }, {
       id: 1324,
+      trackNumber: 3,
+      name: 'track 3',
+      channels: [
+        {
+          id: 31,
+          channelNr: 1,
+          name: 'Gesang Robin',
+          size: 2345345
+        },
+        {
+          id: 33,
+          channelNr: 2,
+          name: 'Gesang Beni',
+          size: 243233
+        },
+        {
+          id: 35,
+          channelNr: 3,
+          name: 'Gesang Silvan',
+          size: 987987
+        }
+      ]
+    }, {
+      id: 1329,
       trackNumber: 1,
       name: 'track 1',
       channels: [
@@ -77,7 +127,7 @@ export const recordings: RecordingModel[] = [
   {
     id: 2345,
     name: 'Aufnahme 3',
-    date: '20181123',
+    date: '20171123',
     tracks: [{
       id: 1324,
       trackNumber: 1,
@@ -107,7 +157,7 @@ export const recordings: RecordingModel[] = [
   {
     id: 3456,
     name: 'Aufnahme 2',
-    date: '20170803',
+    date: '20180103',
     tracks: [{
       id: 1324,
       trackNumber: 1,
@@ -167,7 +217,7 @@ export const recordings: RecordingModel[] = [
   {
     id: 5678,
     name: 'Aufnahme 4',
-    date: '20171013',
+    date: '20180813',
     tracks: [{
       id: 1324,
       trackNumber: 1,
@@ -193,4 +243,5 @@ export const recordings: RecordingModel[] = [
         }
       ]
     }]
-  }];
+  }
+];

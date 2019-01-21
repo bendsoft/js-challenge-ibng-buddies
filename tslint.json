@@ -22,9 +22,10 @@
     "typedef": [
       true,
       "parameter",
-      "arrow-parameter",
       "property-declaration",
       "member-variable-declaration"
-    ]
+    ],
+    "no-unnecessary-class": false,
+    "underscore-consistent-invocation": false
   }
 }
