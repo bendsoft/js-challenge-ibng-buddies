@@ -26,6 +26,7 @@
       "member-variable-declaration"
     ],
     "no-unnecessary-class": false,
-    "underscore-consistent-invocation": false
+    "underscore-consistent-invocation": false,
+    "no-reserved-keywords": false
   }
 }

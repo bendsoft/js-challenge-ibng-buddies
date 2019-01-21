@@ -1,4 +1,4 @@
-import {RecordingListUtils} from "../__tests__/recording-list-utils";
+import {RecordingListUtils} from "./recording-list-utils";
 
 export interface FileNode<T> extends Node {
   file: T;
@@ -9,7 +9,7 @@ export enum FolderType {
 }
 
 export interface FolderNode extends Node {
-  id?: number;
+  id?: number | string;
   folderType: FolderType;
   children: Node[];
 }
@@ -19,24 +19,26 @@ export interface Node {
 }
 
 export interface RecordingModel {
-  id: number;
+  id: number | string;
   name: string;
-  date: string;
+  recordingDate: string;
   tracks: Track[];
 }
 
 export interface Track {
-  id: number;
+  id: number | string;
   trackNumber: number;
   name: string;
-  channels: ChannelRecordingFile[];
+  channelRecordingFiles: ChannelRecordingFile[];
 }
 
 export interface ChannelRecordingFile {
-  id: number;
-  channelNr: number;
+  id: number | string;
+  channelNumber: number;
   name: string;
-  size: number;
+  filename: string;
+  type: string;
+  data: string;
 }
 
 export class RecordingsToFileTreeConverter {
@@ -49,77 +51,95 @@ export const recordings: RecordingModel[] = [
   {
     id: 1234,
     name: 'Aufnahme 5',
-    date: '20171107',
+    recordingDate: '20171107',
     tracks: [{
       id: 1325,
       trackNumber: 2,
       name: 'track 2',
-      channels: [
+      channelRecordingFiles: [
         {
           id: 31,
-          channelNr: 2,
+          channelNumber: 2,
           name: 'Gesang Robin',
-          size: 2345345
+          filename: '',
+          type: '',
+          data: null
         },
         {
           id: 33,
-          channelNr: 1,
+          channelNumber: 1,
           name: 'Gesang Beni',
-          size: 243233
+          filename: '',
+          type: '',
+          data: null
         },
         {
           id: 35,
-          channelNr: 3,
+          channelNumber: 3,
           name: 'Gesang Silvan',
-          size: 987987
+          filename: '',
+          type: '',
+          data: null
         }
       ]
     }, {
       id: 1324,
       trackNumber: 3,
       name: 'track 3',
-      channels: [
+      channelRecordingFiles: [
         {
           id: 31,
-          channelNr: 1,
+          channelNumber: 1,
           name: 'Gesang Robin',
-          size: 2345345
+          filename: '',
+          type: '',
+          data: null
         },
         {
           id: 33,
-          channelNr: 2,
+          channelNumber: 2,
           name: 'Gesang Beni',
-          size: 243233
+          filename: '',
+          type: '',
+          data: null
         },
         {
           id: 35,
-          channelNr: 3,
+          channelNumber: 3,
           name: 'Gesang Silvan',
-          size: 987987
+          filename: '',
+          type: '',
+          data: null
         }
       ]
     }, {
       id: 1329,
       trackNumber: 1,
       name: 'track 1',
-      channels: [
+      channelRecordingFiles: [
         {
           id: 31,
-          channelNr: 1,
+          channelNumber: 1,
           name: 'Gesang Robin',
-          size: 2345345
+          filename: '',
+          type: '',
+          data: null
         },
         {
           id: 33,
-          channelNr: 2,
+          channelNumber: 2,
           name: 'Gesang Beni',
-          size: 243233
+          filename: '',
+          type: '',
+          data: null
         },
         {
           id: 35,
-          channelNr: 3,
+          channelNumber: 3,
           name: 'Gesang Silvan',
-          size: 987987
+          filename: '',
+          type: '',
+          data: null
         }
       ]
     }]
@@ -127,29 +147,35 @@ export const recordings: RecordingModel[] = [
   {
     id: 2345,
     name: 'Aufnahme 3',
-    date: '20171123',
+    recordingDate: '20171123',
     tracks: [{
       id: 1324,
       trackNumber: 1,
       name: 'track 1',
-      channels: [
+      channelRecordingFiles: [
         {
           id: 31,
-          channelNr: 1,
+          channelNumber: 1,
           name: 'Gesang Robin',
-          size: 2345345
+          filename: '',
+          type: '',
+          data: null
         },
         {
           id: 33,
-          channelNr: 2,
+          channelNumber: 2,
           name: 'Gesang Beni',
-          size: 243233
+          filename: '',
+          type: '',
+          data: null
         },
         {
           id: 35,
-          channelNr: 3,
+          channelNumber: 3,
           name: 'Gesang Silvan',
-          size: 987987
+          filename: '',
+          type: '',
+          data: null
         }
       ]
     }]
@@ -157,29 +183,35 @@ export const recordings: RecordingModel[] = [
   {
     id: 3456,
     name: 'Aufnahme 2',
-    date: '20180103',
+    recordingDate: '20180103',
     tracks: [{
       id: 1324,
       trackNumber: 1,
       name: 'track 1',
-      channels: [
+      channelRecordingFiles: [
         {
           id: 21,
-          channelNr: 1,
+          channelNumber: 1,
           name: 'Gesang Robin',
-          size: 2345345
+          filename: '',
+          type: '',
+          data: null
         },
         {
           id: 23,
-          channelNr: 2,
+          channelNumber: 2,
           name: 'Gesang Beni',
-          size: 243233
+          filename: '',
+          type: '',
+          data: null
         },
         {
           id: 25,
-          channelNr: 3,
+          channelNumber: 3,
           name: 'Gesang Silvan',
-          size: 987987
+          filename: '',
+          type: '',
+          data: null
         }
       ]
     }]
@@ -187,29 +219,35 @@ export const recordings: RecordingModel[] = [
   {
     id: 4567,
     name: 'Aufnahme 1',
-    date: '20170803',
+    recordingDate: '20170803',
     tracks: [{
       id: 1324,
       trackNumber: 1,
       name: 'track 1',
-      channels: [
+      channelRecordingFiles: [
         {
           id: 11,
-          channelNr: 1,
+          channelNumber: 1,
           name: 'Gesang Robin',
-          size: 2345345
+          filename: '',
+          type: '',
+          data: null
         },
         {
           id: 13,
-          channelNr: 2,
+          channelNumber: 2,
           name: 'Gesang Beni',
-          size: 243233
+          filename: '',
+          type: '',
+          data: null
         },
         {
           id: 15,
-          channelNr: 3,
+          channelNumber: 3,
           name: 'Gesang Silvan',
-          size: 987987
+          filename: '',
+          type: '',
+          data: null
         }
       ]
     }]
@@ -217,29 +255,35 @@ export const recordings: RecordingModel[] = [
   {
     id: 5678,
     name: 'Aufnahme 4',
-    date: '20180813',
+    recordingDate: '20180813',
     tracks: [{
       id: 1324,
       trackNumber: 1,
       name: 'track 1',
-      channels: [
+      channelRecordingFiles: [
         {
           id: 41,
-          channelNr: 1,
+          channelNumber: 1,
           name: 'Gesang Robin',
-          size: 2345345
+          filename: '',
+          type: '',
+          data: null
         },
         {
           id: 43,
-          channelNr: 2,
+          channelNumber: 2,
           name: 'Gesang Beni',
-          size: 243233
+          filename: '',
+          type: '',
+          data: null
         },
         {
           id: 45,
-          channelNr: 3,
+          channelNumber: 3,
           name: 'Gesang Silvan',
-          size: 987987
+          filename: '',
+          type: '',
+          data: null
         }
       ]
     }]
