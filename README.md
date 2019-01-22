@@ -1,6 +1,7 @@
 [![TypeScript version][ts-badge]][typescript-31]
 [![Node.js version][nodejs-badge]][nodejs]
 [![PRs Welcome][prs-badge]][prs]
+[![Build Status](https://travis-ci.org/bendsoft/js-challenge-ibng-buddies.svg?branch=master)](https://travis-ci.org/bendsoft/js-challenge-ibng-buddies)
 
 # boilerplate for js-challenges
 
